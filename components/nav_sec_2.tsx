@@ -10,8 +10,12 @@ import {
   Icon8,
   Icon9,
 } from "@/components/icone";
+import { useStatee } from "@/contexts/ContextProvider";
+import classNames from "classnames";
 
 export default function Nav_sec_2() {
+  const { Toggle, openG, openNav } = useStatee();
+
   const items = [
     {
       name: "Home",
@@ -62,8 +66,10 @@ export default function Nav_sec_2() {
   ];
 
   return (
-    <div className="flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8">
-      <div className="flex flex-col gap-0.5">
+    <div className="flex flex-1 flex-col overflow-y-auto p-4 ">
+      <div
+        className={classNames("flex flex-col  gap-0.5", openNav && "flex-1")}
+      >
         {items.map((item, index) => {
           return (
             <a
@@ -87,60 +93,60 @@ export default function Nav_sec_2() {
             </a>
           );
         })}
+        {openNav && <div className=" flex-1 mt-8 " />}
+      </div>
+      {/* 2 */}
 
-        {/* 2 */}
-
-        <div className="max-lg:hidden mt-8 flex flex-col gap-0.5">
-          <h3 className="mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400">
-            Upcoming Events
-          </h3>
-          {items2.map((item, index) => {
-            return (
-              <a
-                key={index}
-                href="/"
-                className="group relative  cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5 text-left
+      <div className="max-lg:hidden mt-8 flex flex-col gap-0.5">
+        <h3 className="mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400">
+          Upcoming Events
+        </h3>
+        {items2.map((item, index) => {
+          return (
+            <a
+              key={index}
+              href="/"
+              className="group relative  cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5 text-left
                       hover:bg-zinc-950/5
                      disabled:opacity-50  
                        items-center flex gap-3
                          "
-              >
-                <div
-                  className="font-inter text-zinc-950 dark:text-white text-base/6 sm:text-sm/6
+            >
+              <div
+                className="font-inter text-zinc-950 dark:text-white text-base/6 sm:text-sm/6
                  font-medium group-hover:text-zinc-950 "
-                >
-                  {item}
-                </div>
-              </a>
-            );
-          })}
-        </div>
+              >
+                {item}
+              </div>
+            </a>
+          );
+        })}
+      </div>
 
-        {/* 3 */}
+      {/* 3 */}
 
-        <div className="mt-8">
-          {items3.map((item, index) => {
-            return (
-              <a
-                key={index}
-                href="/"
-                className="group relative cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5 text-left
+      <div className="mt-8">
+        {items3.map((item, index) => {
+          return (
+            <a
+              key={index}
+              href="/"
+              className="group relative cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5 text-left
                       hover:bg-zinc-950/5
                      disabled:opacity-50  
                        items-center flex gap-3
                          "
-              >
-                {/* {index === 0 && (
+            >
+              {/* {index === 0 && (
                   <div className="absolute inset-y-2 -left-4 w-0.5 rounded-full bg-zinc-950 dark:bg-white" />
                 )} */}
-                {item.icone}
-                <div className="font-inter text-zinc-950 dark:text-white text-base/6 sm:text-sm/6 font-medium group-hover:text-zinc-950 ">
-                  {item.name}
-                </div>
-              </a>
-            );
-          })}
-        </div>
+              {item.icone}
+              <div className="font-inter text-zinc-950 dark:text-white text-base/6 sm:text-sm/6 font-medium group-hover:text-zinc-950 ">
+                {item.name}
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   );

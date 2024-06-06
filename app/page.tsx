@@ -1,6 +1,5 @@
 import Header from "@/components/header";
 import Nav from "@/components/nav";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -11,7 +10,10 @@ export default function Home() {
       <Header />
 
       <div>
-        <Nav className="fixed inset-y-0 left-0 w-64 max-lg:hidden" />
+        <Nav
+          className="fixed inset-y-0 left-0 w-64 max-lg:hidden"
+          className2="flex h-full flex-col"
+        />
       </div>
     </main>
   );

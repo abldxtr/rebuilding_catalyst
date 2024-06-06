@@ -6,8 +6,11 @@ import { useRef, useState } from "react";
 import { Icon10, Icon7, Icon8, Icon9 } from "./icone";
 import { useOnClickOutside } from "usehooks-ts";
 import Nav from "./nav";
+import { motion, AnimatePresence } from "framer-motion";
+import { useStatee } from "@/contexts/ContextProvider";
 
 export default function Header() {
+  const { openNav, openNavHandler } = useStatee();
   const [openM, setOpenM] = useState(false);
   const [openA, setOpenA] = useState(false);
   const refM = useRef(null);
@@ -23,7 +26,7 @@ export default function Header() {
     // Your custom logic here
     // console.log("clicked outside");
 
-    setOpenM(false);
+    openNavHandler(false);
   };
 
   useOnClickOutside(refA, handleClickOutside);
@@ -66,33 +69,42 @@ export default function Header() {
               "cursor-default  flex w-full group items-center gap-3 rounded-lg px-2 py-2.5 text-left",
               "text-base/6 font-medium text-zinc-950 sm:py-2 sm:text-sm/5",
               "hover:bg-zinc-950/5 dark:text-white",
-              openM && "bg-zinc-950/5",
+              openNav && "bg-zinc-950/5 pointer-events-none",
             )}
-            onClick={() => setOpenM(!openM)}
+            onClick={() => openNavHandler(true)}
           >
             <Menue_icon
               className={classNames(
                 "size-6 sm:size-5  shrink-0 group-hover:fill-zinc-950 ",
-                openM ? "fill-zinc-950 " : "fill-zinc-500",
+                openNav ? "fill-zinc-950 " : "fill-zinc-500",
               )}
             />
           </button>
         </div>
         {/* menue */}
-        {openM && (
-          <div>
-            {/* screen */}
-            <div className="fixed inset-0 bg-black/30 opacity-100"></div>
+        <AnimatePresence>
+          {openNav && (
+            <div>
+              {/* screen */}
+              <motion.div
+                className="fixed inset-0 bg-black/30 opacity-100"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.3 } }}
+                exit={{ opacity: 0, transition: { duration: 0.3 } }}
+              />
 
-            {/* menue */}
-            {/* <div className="relative" ref={refM}> */}
-            <Nav
-              className="fixed inset-y-0 w-full max-w-80 p-2 transition translate-x-0"
-              className2="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10"
-            />
-            {/* </div> */}
-          </div>
-        )}
+              {/* menue */}
+              <div className="relative" ref={refM}>
+                <Nav
+                  // close={true}
+                  // setAct={setOpenM}
+                  className="fixed left-0 inset-y-0 w-full max-w-80 p-2"
+                  className2="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10"
+                />
+              </div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* right */}
@@ -103,7 +115,7 @@ export default function Header() {
             "cursor-default  flex w-full group items-center gap-3 rounded-lg px-2 py-2.5 text-left",
             "text-base/6 font-medium text-zinc-950 sm:py-2 sm:text-sm/5",
             "hover:bg-zinc-950/5 dark:text-white",
-            openA && "bg-zinc-950/5",
+            openA && "bg-zinc-950/5 pointer-events-none",
           )}
           onClick={(e) => {
             console.log(openA);

@@ -4,10 +4,13 @@ import { useRef, useState } from "react";
 import classNames from "classnames";
 import { Icon10, Icon7, Icon8, Icon9 } from "./icone";
 import { useOnClickOutside } from "usehooks-ts";
+import { useStatee } from "@/contexts/ContextProvider";
 
 export default function Nav_sec_3() {
+  const { Toggle, openG } = useStatee();
+
   const ref = useRef(null);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleClickOutside = () => {
     // Your custom logic here
     // console.log("clicked outside");
@@ -53,9 +56,12 @@ export default function Nav_sec_3() {
           "cursor-default  flex w-full group items-center gap-3 rounded-lg px-2 py-2.5 text-left",
           "text-base/6 font-medium text-zinc-950 sm:py-2 sm:text-sm/5",
           "hover:bg-zinc-950/5 dark:text-white",
-          open && "bg-zinc-950/5",
+          open && "bg-zinc-950/5 pointer-events-none ",
+          // openG && "hover:bg-red-400",
         )}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          setOpen(!open);
+        }}
       >
         <img
           src="https://catalyst-demo.tailwindui.com/users/erica.jpg"
