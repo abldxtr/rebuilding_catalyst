@@ -9,13 +9,9 @@ import { Close_icon, Menue_icon } from "./icone";
 import React from "react";
 import { useStatee } from "@/contexts/ContextProvider";
 
-type Prop = {
-  setAct: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 export default function Nav({
   className,
-  className2 = "flex h-full flex-col",
+  className2,
 }: {
   className: string;
   className2: string;
@@ -27,7 +23,7 @@ export default function Nav({
       className={className}
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1, transition: { duration: 0.3 } }}
-      exit={{ x: -100, opacity: 0 }}
+      exit={{ x: -100 }}
     >
       <nav className={className2}>
         {/* close icon */}

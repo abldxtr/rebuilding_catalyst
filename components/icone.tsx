@@ -176,3 +176,20 @@ export const Close_icon = ({ className }: { className: string }) => (
     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"></path>
   </svg>
 );
+
+export const Select_icon = ({ className }: { className: string }) => (
+  <svg className={className} viewBox="0 0 16 16" aria-hidden="true" fill="none">
+    <path
+      d="M5.75 10.75L8 13L10.25 10.75"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M10.25 5.25L8 3L5.75 5.25"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </svg>
+);

@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Main from "@/components/main";
 import Nav from "@/components/nav";
 
 export default function Home() {
@@ -15,6 +16,8 @@ export default function Home() {
           className2="flex h-full flex-col"
         />
       </div>
+
+      <Main />
     </main>
   );
 }
