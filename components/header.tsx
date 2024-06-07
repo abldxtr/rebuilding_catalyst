@@ -137,7 +137,7 @@ export default function Header() {
         </button>
         {/* submenue */}
         {openA && (
-          <div className=" absolute top-[42px] left-[-215px]" ref={refA}>
+          <div className=" absolute z-[10] top-[42px] left-[-215px]" ref={refA}>
             <div
               className="min-w-64 z-30 lg:min-w-64
             isolate w-max rounded-xl p-1 outline outline-1 outline-transparent focus:outline-none overflow-y-auto bg-white/75
