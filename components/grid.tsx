@@ -1,59 +1,30 @@
+import classNames from "classnames";
+
 export default function Grid() {
   const data = [
     {
       title: "Total revenue",
       value: "$2.6M",
-      percentageChange: "+4.5%",
+      percentageChange: "+4.5",
       comparisonText: "from last week",
     },
     {
       title: "Average order value",
       value: "$455",
-      percentageChange: "-0.5%",
+      percentageChange: "-0.5",
       comparisonText: "from last week",
     },
     {
       title: "Tickets sold",
       value: "5,888",
-      percentageChange: "+4.5%",
+      percentageChange: "+4.5",
       comparisonText: "from last week",
     },
     {
       title: "Pageviews",
       value: "823,067",
-      percentageChange: "+21.2%",
+      percentageChange: "+21.2",
       comparisonText: "from last week",
-    },
-  ];
-
-  const table_data = [
-    {
-      "Order number": 3000,
-      "Purchase date": "May 9, 2024",
-      Customer: "Leslie Alexander",
-      Event: "Bear Hug: Live in Concert",
-      Amount: "$80.00",
-    },
-    {
-      "Order number": 3001,
-      "Purchase date": "May 5, 2024",
-      Customer: "Michael Foster",
-      Event: "Six Fingers — DJ Set",
-      Amount: "$299.00",
-    },
-    {
-      "Order number": 3002,
-      "Purchase date": "Apr 28, 2024",
-      Customer: "Dries Vincent",
-      Event: "We All Look The Same",
-      Amount: "$150.00",
-    },
-    {
-      "Order number": 3003,
-      "Purchase date": "Apr 23, 2024",
-      Customer: "Lindsay Walton",
-      Event: "Bear Hug: Live in Concert",
-      Amount: "$80.00",
     },
   ];
 
@@ -75,11 +46,14 @@ export default function Grid() {
             </div>
             <div className="mt-3 text-sm/6 sm:text-xs/6">
               <span
-                className="inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-sm/5 font-medium sm:text-xs/5 
-              forced-colors:outline bg-lime-400/20 text-lime-700 group-data-[hover]:bg-lime-400/30 dark:bg-lime-400/10
-               dark:text-lime-300 dark:group-data-[hover]:bg-lime-400/15"
+                className={classNames(
+                  "inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-sm/5 font-medium sm:text-xs/5",
+                  item.percentageChange >= 0
+                    ? " bg-lime-400/20 text-lime-700 group-hover:bg-lime-400/30 dark:bg-lime-400/10 dark:text-lime-300 dark:group-hover:bg-lime-400/15 "
+                    : " bg-pink-400/15 text-pink-700 group-hover:bg-pink-400/25 dark:bg-pink-400/10 dark:text-pink-400 dark:group-hover:bg-pink-400/20",
+                )}
               >
-                {item.percentageChange}
+                {item.percentageChange}%
               </span>{" "}
               <span className="text-zinc-500">{item.comparisonText}</span>
             </div>

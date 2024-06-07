@@ -21,9 +21,10 @@ export default function Nav({
   return (
     <motion.div
       className={className}
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.3 } }}
-      exit={{ x: -100 }}
+      initial={{ x: "-100%", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: "-100%" }}
+      transition={{ duration: 0.3 }}
     >
       <nav className={className2}>
         {/* close icon */}

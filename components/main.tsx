@@ -1,5 +1,6 @@
 import Grid from "./grid";
 import { Select_icon } from "./icone";
+import Table from "./table";
 
 export default function Main() {
   return (
@@ -50,6 +51,10 @@ export default function Main() {
         </div>
         {/* 3 */}
         <Grid />
+
+        {/* table */}
+
+        <Table />
       </div>
     </div>
   );

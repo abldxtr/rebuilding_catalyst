@@ -87,10 +87,11 @@ export default function Header() {
             <div>
               {/* screen */}
               <motion.div
-                className="fixed inset-0 bg-black/30 opacity-100"
+                className="fixed z-[10] inset-0 bg-black/30 opacity-100"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.3 } }}
-                exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
               />
 
               {/* menue */}
@@ -98,7 +99,7 @@ export default function Header() {
                 <Nav
                   // close={true}
                   // setAct={setOpenM}
-                  className="fixed left-0 inset-y-0 w-full max-w-80 p-2"
+                  className="fixed left-0 z-[11] inset-y-0 w-full max-w-80 p-2"
                   className2="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10"
                 />
               </div>
