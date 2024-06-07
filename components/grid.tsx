@@ -48,12 +48,14 @@ export default function Grid() {
               <span
                 className={classNames(
                   "inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-sm/5 font-medium sm:text-xs/5",
-                  item.percentageChange >= 0
+                  parseFloat(item.percentageChange) >= 0
                     ? " bg-lime-400/20 text-lime-700 group-hover:bg-lime-400/30 dark:bg-lime-400/10 dark:text-lime-300 dark:group-hover:bg-lime-400/15 "
                     : " bg-pink-400/15 text-pink-700 group-hover:bg-pink-400/25 dark:bg-pink-400/10 dark:text-pink-400 dark:group-hover:bg-pink-400/20",
                 )}
               >
-                {item.percentageChange}%
+                {parseInt(item.percentageChange) >= 0
+                  ? `${item.percentageChange}%`
+                  : `${item.percentageChange}%`}
               </span>{" "}
               <span className="text-zinc-500">{item.comparisonText}</span>
             </div>
